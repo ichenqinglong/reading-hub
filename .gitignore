@@ -1,6 +1,5 @@
-# Source markdown files (keep workflow doc, ignore raw reading md)
-*.md
-!README.md
+# Source files (local only, not deployed)
+/src/
 
 # macOS
 .DS_Store
