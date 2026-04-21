@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Practice · Data Centers & Democracy</title>
+<meta name="description" content="English reading practice: Data center resistance in Virginia. Target vocabulary: capitalize, precipitate, capitulate, tactics, assessment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   DESIGN SYSTEM: "The Times" (News & Journalistic)
+   Focus: Objective, sharp contrast, electric accents
+   ======================================== */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  /* --- Deep Charcoal & Space Black --- */
+  --void:        #08080a;
+  --surface:     #101014;
+  --line:        #2a2a35;
+  --muted:       #5a5a70;
+  --secondary:   #8a8a9f;
+  --text:        #dfdfe5;
+  --bright:      #fcfcfd;
+
+  /* --- Electric Cyan Accent (Tech/Data Theme) --- */
+  --accent:           #00e5ff;
+  --accent-dim:       rgba(0, 229, 255, 0.15);
+  --accent-glow:      rgba(0, 229, 255, 0.4);
+  --accent-gradient:  linear-gradient(90deg, var(--accent), transparent);
+
+  /* --- Spacing System (間) --- */
+  --breath:      clamp(4rem, 10vh, 8rem);
+  --pause:       clamp(2rem, 5vh, 4rem);
+  --whisper:     clamp(1rem, 2vh, 2rem);
+}
+
+html{
+  font-size:16px;
+  scroll-behavior:smooth;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+body{
+  background: var(--void);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+  line-height: 2;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ========================================
+   BACKGROUND — Subtle Tech Matrix / Deep Void
+   ======================================== */
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle 800px at 15% 15%, #05141e 0%, transparent 60%),
+    radial-gradient(ellipse 100% 120% at 85% 85%, #081216 0%, transparent 50%);
+  z-index:-2;
+  pointer-events:none;
+}
+
+/* Faint precision grid */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image: 
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.15;
+  z-index:-1;
+  pointer-events:none;
+  mask-image: radial-gradient(ellipse at center,  black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center,  black 20%, transparent 80%);
+}
+
+/* ========================================
+   LAYOUT — 30% Content, 70% Space
+   ======================================== */
+
+.universe{
+  max-width: 640px;
+  margin: 0 auto;
+  padding: calc(var(--breath)*1.2) clamp(1.5rem,5vw,3rem) var(--breath);
+  position:relative;
+}
+
+/* ========================================
+   HEADER — Journalistic Sharpness
+   ======================================== */
+
+.header{
+  margin-bottom: calc(var(--breath)*1.5);
+  position:relative;
+}
+
+/* Minimal crosshair accent */
+.header::before{
+  content:'+';
+  position:absolute;
+  top:-2rem;
+  left:-10px;
+  color:var(--accent);
+  font-family:'Inter', sans-serif;
+  font-weight:300;
+  font-size:12px;
+  opacity:0.8;
+}
+
+.header__meta{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom: var(--pause);
+}
+
+.header__date{
+  font-family:'Inter',sans-serif;
+  font-size:0.65rem;
+  font-weight:400;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.header__level{
+  font-family:'Inter',sans-serif;
+  font-size:0.6rem;
+  font-weight:600;
+  letter-spacing:0.15em;
+  color:var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.2em 0.8em;
+  border-radius: 12px;
+  text-transform:uppercase;
+}
+
+.header__title{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(1.8rem,4vw,2.5rem);
+  font-weight:400;
+  color:var(--bright);
+  line-height:1.2;
+  letter-spacing:-0.02em;
+  margin-bottom: var(--whisper);
+}
+
+.header__subtitle{
+  font-family:'Noto Serif SC',serif;
+  font-size:0.95rem;
+  font-weight:300;
+  color:var(--secondary);
+  letter-spacing:0.05em;
+  padding-left:1rem;
+  border-left: 2px solid var(--line);
+}
+
+/* ========================================
+   VOCABULARY CONSTELLATION
+   ======================================== */
+
+.vocab{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.8rem;
+  margin-bottom: var(--breath);
+  padding-bottom: var(--pause);
+  border-bottom: 1px solid var(--line);
+}
+
+.vocab__word{
+  font-family:'Inter',sans-serif;
+  font-size:0.75rem;
+  font-weight:400;
+  letter-spacing:0.05em;
+  color:var(--secondary);
+  padding:0.4em 1em;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: all 0.4s ease;
+  cursor:default;
+}
+
+.vocab__word:hover{
+  color:var(--void);
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* ========================================
+   READING PASSAGE & GHOST AUDIO
+   ======================================== */
+
+.passage{
+  margin-bottom: var(--breath);
+}
+
+.para{
+  position:relative;
+  margin-bottom: calc(var(--breath)*0.8);
+  display:flex;
+  gap:1.5rem;
+  opacity:0;
+  transform:translateY(16px);
+  animation: emerge 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  transition: transform 0.5s ease;
+}
+
+.para:nth-child(1){ animation-delay:0.1s; }
+.para:nth-child(2){ animation-delay:0.2s; }
+.para:nth-child(3){ animation-delay:0.3s; }
+.para:nth-child(4){ animation-delay:0.4s; }
+.para:nth-child(5){ animation-delay:0.5s; }
+.para:nth-child(6){ animation-delay:0.6s; }
+
+@keyframes emerge{
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* Left sidebar: Index + Ghost Audio Trigger */
+.para__sidebar{
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.8rem;
+  padding-top:0.4rem;
+  width:24px;
+}
+
+.para__index{
+  font-family:'Inter',sans-serif;
+  font-size:0.55rem;
+  font-weight:400;
+  letter-spacing:0.1em;
+  color:var(--muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transition: color 0.4s ease;
+}
+
+/* --- Ghost Audio Button --- */
+.ghost-audio-btn{
+  background:none;
+  border:1px solid var(--muted);
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  color:var(--muted);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: all 0.3s ease;
+  outline:none;
+}
+
+.ghost-audio-btn svg{
+  width:10px;
+  height:10px;
+  fill:currentColor;
+  transition: all 0.3s ease;
+}
+
+.ghost-audio-btn:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  box-shadow: 0 0 10px var(--accent-dim);
+}
+
+.para__content{
+  position:relative;
+  padding-left:1.5rem;
+  border-left: 1px solid transparent;
+  transition: all 0.5s ease;
+}
+
+.para__text{
+  font-size:clamp(1.05rem,2.5vw,1.18rem);
+  color:var(--text);
+  line-height:2.1;
+  font-weight:300;
+}
+
+/* --- Read-Along Visual State --- */
+.para.is-playing .para__content{
+  border-left-color: var(--accent);
+  padding-left:1.5rem;
+}
+
+.para.is-playing .para__text{
+  color:var(--bright);
+}
+
+.para.is-playing .para__index{
+  color:var(--accent);
+}
+
+.para.is-playing .ghost-audio-btn{
+  border-color:var(--accent);
+  color:var(--accent);
+  background:var(--accent-dim);
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border{
+  0% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  70% { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* ========================================
+   IMMERSIVE VOCAB TOOLTIP
+   ======================================== */
+
+.vocab-highlight{
+  color:var(--bright);
+  font-weight:500;
+  position:relative;
+  cursor:help;
+  transition: color 0.4s ease;
+  border-bottom: 1px dashed var(--muted);
+  padding-bottom: 2px;
+}
+
+.vocab-highlight::after{
+  content:'';
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  width:100%;
+  height:2px;
+  background: var(--accent-gradient);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.vocab-highlight:hover{
+  color:var(--accent);
+  border-bottom-color: transparent;
+}
+
+.vocab-highlight:hover::after{
+  transform:scaleX(1);
+}
+
+/* Tooltip Popup */
+.vocab-highlight[data-meaning]::before{
+  content:attr(data-meaning);
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%) translateY(8px);
+  background:var(--surface);
+  border:1px solid var(--accent-dim);
+  color:var(--text);
+  font-family:'Inter','Noto Serif SC',sans-serif;
+  font-size:0.75rem;
+  font-style:normal;
+  font-weight:400;
+  padding:0.6em 1em;
+  white-space:nowrap;
+  border-radius:4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  opacity:0;
+  pointer-events:none;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index:20;
+}
+
+.vocab-highlight[data-meaning]:hover::before{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* ========================================
+   QUOTE BLOCK — Suspended in space
+   ======================================== */
+
+.quote-block{
+  margin: calc(var(--breath)*1.2) 0;
+  padding: 0;
+  position:relative;
+  text-align:center;
+}
+
+.quote-block::before{
+  content:'"';
+  position:absolute;
+  top:-3rem;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:6rem;
+  font-family:Georgia,serif;
+  color:var(--accent-dim);
+  opacity:0.3;
+  line-height:1;
+}
+
+.quote-block__text{
+  font-size:clamp(1.2rem,3vw,1.4rem);
+  font-style:italic;
+  font-weight:300;
+  color:var(--bright);
+  line-height:1.8;
+  max-width:480px;
+  margin:0 auto var(--pause);
+  position:relative;
+  z-index:1;
+}
+
+.quote-block__attr{
+  font-family:'Inter',sans-serif;
+  font-size:0.75rem;
+  font-weight:400;
+  color:var(--muted);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+}
+
+/* ========================================
+   DIVIDER — 1px minimalist
+   ======================================== */
+
+.divider{
+  width:100%;
+  height:1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+  margin: var(--breath) 0;
+}
+
+/* ========================================
+   COMPREHENSION SECTION — Interactive Validation
+   ======================================== */
+
+.comprehension{
+  margin-top: calc(var(--breath)*1);
+}
+
+.comprehension__title{
+  font-family:'Inter',sans-serif;
+  font-size:0.75rem;
+  font-weight:400;
+  letter-spacing:0.3em;
+  color:var(--muted);
+  margin-bottom: var(--pause);
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+
+.comprehension__title::after{
+  content:'';
+  flex-grow:1;
+  height:1px;
+  background:var(--line);
+}
+
+.question{
+  margin-bottom: calc(var(--pause)*1.5);
+}
+
+.question__label{
+  font-family:'Inter',sans-serif;
+  font-size:0.65rem;
+  font-weight:600;
+  color:var(--accent);
+  margin-bottom:0.8rem;
+  display:inline-block;
+}
+
+.question__text{
+  font-family: 'Inter',sans-serif;
+  font-size:1rem;
+  font-weight:400;
+  color:var(--bright);
+  line-height:1.7;
+  margin-bottom:1.5rem;
+}
+
+/* Elegantly styled choices */
+.choices{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:0.8rem;
+}
+
+.choices li{
+  font-family: 'Inter',sans-serif;
+  font-size:0.95rem;
+  color:var(--text);
+  padding:0.8em 1.2em;
+  border:1px solid var(--line);
+  border-radius:6px;
+  cursor:pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+
+.choices li::before{
+  content:attr(data-label);
+  font-size:0.7rem;
+  font-weight:600;
+  color:var(--muted);
+  width:24px;
+  height:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--surface);
+  transition: all 0.3s ease;
+}
+
+.choices li:hover{
+  border-color:var(--muted);
+  background:rgba(255,255,255,0.02);
+  transform:translateX(4px);
+}
+
+.choices li.selected{
+  border-color:var(--accent);
+  background:var(--accent-dim);
+  color:var(--bright);
+}
+
+.choices li.selected::before{
+  background:var(--accent);
+  color:var(--void);
+}
+
+/* Chinese open-ended question */
+.question__text--cn{
+  font-family:'Noto Serif SC',serif;
+  font-size:1.05rem;
+  font-weight:300;
+  line-height:2;
+  color:var(--secondary);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer{
+  margin-top: calc(var(--breath)*1.5);
+  padding-bottom: var(--breath);
+  text-align:center;
+}
+
+.footer__mark{
+  font-family:'Inter',sans-serif;
+  font-size:0.55rem;
+  font-weight:400;
+  letter-spacing:0.4em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media(max-width:600px){
+  .para{ gap:1rem; flex-direction:column; }
+  .para__sidebar{ flex-direction:row; align-items:center; width:100%; border-bottom:1px solid var(--line); padding-bottom:0.5rem; justify-content:space-between;}
+  .para__index{ writing-mode:horizontal-tb; transform:none; }
+  .para__content{ padding-left:0; border-left:none; border-top:1px solid transparent; padding-top:0.5rem;}
+  .para.is-playing .para__content{ border-left-color:transparent; border-top-color:var(--accent); padding-left:0;}
+}
+
+/* ========================================
+   SCROLL REVEAL UTILITY
+   ======================================== */
+
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<main class="universe">
+
+  <!-- ═══════════════════════════════════
+       HEADER
+       ═══════════════════════════════════ -->
+  <header class="header">
+    <div class="header__meta">
+      <span class="header__date">2026.04.20</span>
+      <span class="header__level">Level 3</span>
+    </div>
+    <h1 class="header__title">Data Centers &amp; Democracy</h1>
+    <p class="header__subtitle">The rising friction between server farms and local voters deeply concerned about energy.</p>
+  </header>
+
+  <!-- ═══════════════════════════════════
+       VOCABULARY CONSTELLATION
+       ═══════════════════════════════════ -->
+  <nav class="vocab" aria-label="Target vocabulary">
+    <span class="vocab__word">capitalize</span>
+    <span class="vocab__word">precipitate</span>
+    <span class="vocab__word">capitulate</span>
+    <span class="vocab__word">tactics</span>
+    <span class="vocab__word">assessment</span>
+  </nav>
+
+  <!-- ═══════════════════════════════════
+       READING PASSAGE
+       ═══════════════════════════════════ -->
+  <article class="passage">
+
+    <!-- ¶1 -->
+    <section class="para" id="para-1">
+      <aside class="para__sidebar">
+        <span class="para__index">01</span>
+        <button class="ghost-audio-btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776681828395-0_20260420184504_706efcd2.mp3" aria-label="Play paragraph audio">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> 
+        </button>
+      </aside>
+      <div class="para__content">
+        <p class="para__text">Three years ago, 69% of Virginia voters were comfortable with data centers moving into their communities. Today, that number has collapsed to 35%.</p>
+      </div>
+    </section>
+
+    <!-- ¶2 -->
+    <section class="para" id="para-2">
+      <aside class="para__sidebar">
+        <span class="para__index">02</span>
+        <button class="ghost-audio-btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776681828395-1_20260420184510_fc43f941.mp3" aria-label="Play paragraph audio">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </aside>
+      <div class="para__content">
+        <p class="para__text">The shift did not happen quietly. In Loudoun County — home to more data centers per square mile than anywhere else on Earth — residents began <span class="vocab-highlight" data-meaning="利用，乘机发挥 — to take advantage of">capitalizing</span> on local election cycles to push back. Nearly 400 grassroots organizations formed nationwide in a single year, double the number from the year before.</p>
+      </div>
+    </section>
+
+    <!-- ¶3 -->
+    <section class="para" id="para-3">
+      <aside class="para__sidebar">
+        <span class="para__index">03</span>
+        <button class="ghost-audio-btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776681828395-2_20260420184516_1b4f41fe.mp3" aria-label="Play paragraph audio">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </aside>
+      <div class="para__content">
+        <p class="para__text">What <span class="vocab-highlight" data-meaning="引发，促使 — to cause to happen suddenly">precipitated</span> the anger was not the server farms themselves but the electricity bills that followed. Fifty-seven percent of voters believe data centers have driven up their home energy costs. Sixty-two percent of Americans now say the costs outweigh the benefits.</p>
+      </div>
+    </section>
+
+    <!-- ¶4 — QUOTE -->
+    <section class="para" id="para-4">
+      <aside class="para__sidebar">
+        <span class="para__index">04</span>
+        <button class="ghost-audio-btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776681828395-3_20260420184521_81624339.mp3" aria-label="Play paragraph audio">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </aside>
+      <div class="para__content" style="width:100%;">
+        <figure class="quote-block">
+          <blockquote class="quote-block__text">Lots of people are making money on these institutions. Not Virginians who pay for it.</blockquote>
+          <figcaption class="quote-block__attr">Sylvia Whitt, 78, Charlottesville</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ¶5 -->
+    <section class="para" id="para-5">
+      <aside class="para__sidebar">
+        <span class="para__index">05</span>
+        <button class="ghost-audio-btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776681828395-4_20260420184527_0dcff6cd.mp3" aria-label="Play paragraph audio">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </aside>
+      <div class="para__content">
+        <p class="para__text">Politicians who once <span class="vocab-highlight" data-meaning="屈服让步 — to cease to resist">capitulated</span> to tech industry lobbying are recalibrating. Prince William County abandoned a 1,700-acre data center project. A $1 billion development east of Richmond was shelved last August. Governor Abigail Spanberger has taken aim at data center tax breaks.</p>
+      </div>
+    </section>
+
+    <!-- ¶6 -->
+    <section class="para" id="para-6">
+      <aside class="para__sidebar">
+        <span class="para__index">06</span>
+        <button class="ghost-audio-btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776681828395-5_20260420184533_dc515e1b.mp3" aria-label="Play paragraph audio">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </aside>
+      <div class="para__content">
+        <p class="para__text">The <span class="vocab-highlight" data-meaning="策略手法 — planned strategy">tactics</span> have shifted too. Where tech companies once relied on promises of jobs and tax revenue, they now face a harder <span class="vocab-highlight" data-meaning="评估与判断 — evaluation">assessment</span> from voters who have seen their bills and made up their minds.</p>
+      </div>
+    </section>
+
+  </article>
+
+  <!-- ═══════════════════════════════════
+       DIVIDER
+       ═══════════════════════════════════ -->
+  <div class="divider" role="separator"></div>
+
+  <!-- ═══════════════════════════════════
+       COMPREHENSION QUESTIONS
+       ═══════════════════════════════════ -->
+  <section class="comprehension reveal">
+    <h2 class="comprehension__title">Knowledge Check</h2>
+
+    <!-- Q1 -->
+    <div class="question reveal">
+      <span class="question__label">Q1. Extraction</span>
+      <p class="question__text">According to the article, what specific action did Prince William County take in response to voter anger?</p>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question reveal">
+      <span class="question__label">Q2. Vocabulary Context</span>
+      <p class="question__text">In the story, "<strong>capitulated</strong>" most likely means…</p>
+      <ul class="choices">
+        <li data-label="A">strongly opposed</li>
+        <li data-label="B">gave in without resistance</li>
+        <li data-label="C">carefully negotiated</li>
+        <li data-label="D">publicly criticized</li>
+      </ul>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question reveal">
+      <span class="question__label">Q3. Critical Thinking</span>
+      <p class="question__text question__text--cn">文章提到弗吉尼亚州选民对数据中心的支持率从 69% 跌至 35%。你认为是什么让普通居民的态度发生了这么大的转变？</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       FOOTER & GLOBAL AUDIO
+       ═══════════════════════════════════ -->
+  <footer class="footer">
+    <p class="footer__mark">Reading Engine V2</p>
+  </footer>
+
+  <audio id="global-audio-player" style="display:none;"></audio>
+
+</main>
+
+<!-- ═══════════════════════════════════
+     SCRIPTS: Interactions & Ghost Audio Logic
+     ═══════════════════════════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+
+  // --- Scroll Reveal Logic ---
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{ threshold:0.15, rootMargin:'0px 0px -50px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // --- Choice Selection Logic ---
+  document.querySelectorAll('.choices').forEach(list => {
+    list.addEventListener('click', e => {
+      const li = e.target.closest('li');
+      if(!li) return;
+      list.querySelectorAll('li').forEach(item => item.classList.remove('selected'));
+      li.classList.add('selected');
+    });
+  });
+
+  // --- Ghost Audio Player Logic ---
+  const globalPlayer = document.getElementById('global-audio-player');
+  const audioButtons = document.querySelectorAll('.ghost-audio-btn');
+  let currentPlayingBtn = null;
+
+  // SVG Icons
+  const playIcon = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  const pauseIcon = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+
+  function resetAllAudioUI() {
+    audioButtons.forEach(btn => {
+      btn.innerHTML = playIcon;
+      // Remove class from the parent paragraph section
+      const para = btn.closest('.para');
+      if(para) para.classList.remove('is-playing');
+    });
+  }
+
+  function setPlayingUI(btn) {
+    btn.innerHTML = pauseIcon;
+    const para = btn.closest('.para');
+    if(para) para.classList.add('is-playing');
+  }
+
+  audioButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const url = btn.getAttribute('data-audio-src');
+
+      // If clicking the currently playing button, pause it
+      if (currentPlayingBtn === btn && !globalPlayer.paused) {
+        globalPlayer.pause();
+        resetAllAudioUI();
+        currentPlayingBtn = null;
+        return;
+      }
+
+      // Play new source
+      resetAllAudioUI();
+      globalPlayer.src = url;
+      globalPlayer.play().then(() => {
+        setPlayingUI(btn);
+        currentPlayingBtn = btn;
+      }).catch(err => {
+        console.error("Audio playback failed:", err);
+      });
+    });
+  });
+
+  // Auto reset when audio finishes
+  globalPlayer.addEventListener('ended', () => {
+    resetAllAudioUI();
+    currentPlayingBtn = null;
+  });
+
+});
+</script>
+
+</body>
+</html>

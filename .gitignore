@@ -1,0 +1,11 @@
+# Source markdown files (keep workflow doc, ignore raw reading md)
+*.md
+!README.md
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~
