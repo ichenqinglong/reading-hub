@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Every Drop — 沉浸式阅读 | Reading Hub</title>
+<meta name="description" content="A bowl of beef noodle soup becomes a vessel of memory — an immersive English reading experience about food, family, and the things we carry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   The Scholar — 经典文学风
+   温润 · 沉淀 · 慢阅读
+   ═══════════════════════════════════════════ */
+
+*,*::before,*::after{ margin:0; padding:0; box-sizing:border-box; }
+
+:root{
+  /* — Parchment Palette — */
+  --bg:        #faf8f4;
+  --bg-warm:   #f5f0e8;
+  --surface:   #ffffff;
+  --text:      #4a4039;
+  --text-light:#7a7068;
+  --text-faint:#a09888;
+  --heading:   #2d2520;
+  --amber:     #c47530;
+  --amber-soft:rgba(196,117,48,0.10);
+  --amber-glow:rgba(196,117,48,0.25);
+  --gold:      #b8860b;
+  --cream:     #f0e6d4;
+  --border:    #e8e0d4;
+  --shadow:    rgba(80,60,40,0.06);
+
+  /* — Spacing — */
+  --breath:    clamp(3rem, 8vh, 6rem);
+  --pause:     clamp(1.5rem, 4vh, 3rem);
+  --whisper:   clamp(0.8rem, 2vh, 1.2rem);
+}
+
+html{
+  font-size: 18px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+  line-height: 1.9;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══ Ambient Background ═══ */
+body::before{
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at 30% 20%, rgba(196,117,48,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 500px at 75% 80%, rgba(184,134,11,0.03) 0%, transparent 50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ═══ Page Container ═══ */
+.page{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+}
+
+/* ═══ Back Navigation ═══ */
+.back-nav{
+  padding: var(--whisper) 0;
+  margin-bottom: var(--pause);
+}
+
+.back-nav a{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.back-nav a:hover{ color: var(--amber); }
+.back-nav a::before{ content: '←'; font-size: 0.8rem; }
+
+/* ═══ Hero Section ═══ */
+.hero{
+  margin-bottom: var(--breath);
+  position: relative;
+}
+
+.hero__image-wrap{
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: var(--pause);
+  box-shadow: 0 20px 60px var(--shadow), 0 4px 16px var(--shadow);
+}
+
+.hero__image{
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+/* — Metadata Badges — */
+.meta-badges{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: var(--whisper);
+}
+
+.badge{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--text-faint);
+  background: var(--surface);
+}
+
+.badge--level{
+  border-color: var(--amber);
+  color: var(--amber);
+  background: var(--amber-soft);
+}
+
+.badge--style{
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* — Title — */
+.hero__title{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 300;
+  color: var(--heading);
+  line-height: 1.15;
+  margin-bottom: 0.3em;
+  letter-spacing: -0.01em;
+}
+
+.hero__subtitle{
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text-light);
+  margin-bottom: var(--pause);
+}
+
+.hero__divider{
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--amber), transparent);
+  opacity: 0.6;
+}
+
+/* ═══ Full Audio Player ═══ */
+.full-audio{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.4rem;
+  margin-bottom: var(--breath);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.full-audio__icon{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.full-audio__icon:hover{
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px var(--amber-glow);
+}
+
+.full-audio__icon svg{
+  width: 14px;
+  height: 14px;
+  fill: white;
+  margin-left: 2px;
+}
+
+.full-audio__icon .pause-icon{ display: none; margin-left: 0; }
+.full-audio__icon.playing .play-icon{ display: none; }
+.full-audio__icon.playing .pause-icon{ display: block; }
+
+.full-audio__info{
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.full-audio__label{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.full-audio__title{
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* ═══ Vocab Star Chart ═══ */
+.vocab-chart{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: var(--breath);
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.vocab-chart__header{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+.vocab-chart__list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  list-style: none;
+}
+
+.vocab-star{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: var(--amber-soft);
+  border: 1px solid rgba(196,117,48,0.12);
+  cursor: default;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vocab-star:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--amber-glow);
+}
+
+.vocab-star__word{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--amber);
+}
+
+.vocab-star__hint{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ═══ Article Body ═══ */
+.article{
+  margin-bottom: var(--breath);
+}
+
+/* — Paragraph with number — */
+.para{
+  position: relative;
+  margin-bottom: var(--pause);
+  padding-left: 3rem;
+  clear: both;
+  overflow: hidden;
+}
+
+.para::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.para__num{
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  width: 2.2rem;
+  text-align: right;
+  user-select: none;
+}
+
+/* — Ghost Audio Button — */
+.ghost-audio{
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ghost-audio__btn{
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.ghost-audio__btn:hover{
+  border-color: var(--amber);
+  background: var(--amber-soft);
+}
+
+.ghost-audio__btn svg{
+  width: 8px;
+  height: 8px;
+  fill: var(--text-faint);
+  margin-left: 1px;
+  transition: fill 0.3s ease;
+}
+
+.ghost-audio__btn:hover svg{ fill: var(--amber); }
+
+.ghost-audio__btn .pause-icon{ display: none; margin-left: 0; }
+.ghost-audio__btn.playing .play-icon{ display: none; }
+.ghost-audio__btn.playing .pause-icon{ display: block; }
+.ghost-audio__btn.playing{
+  border-color: var(--amber);
+  background: var(--amber-soft);
+}
+.ghost-audio__btn.playing svg{ fill: var(--amber); }
+
+.ghost-audio__num{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5rem;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* — Paragraph text glow when playing — */
+.para.playing .para__text{
+  color: var(--heading);
+  transition: color 0.4s ease;
+}
+
+.para.playing::before{
+  content: '';
+  position: absolute;
+  left: 2.4rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--amber), transparent);
+  opacity: 0.4;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow{
+  0%, 100%{ opacity: 0.3; }
+  50%{ opacity: 0.6; }
+}
+
+.para__text{
+  font-size: 1.1rem;
+  line-height: 2;
+  color: var(--text);
+  transition: color 0.4s ease;
+}
+
+/* — Drop Cap (first paragraph) — */
+.para--first .para__text::first-letter{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8em;
+  float: left;
+  line-height: 0.8;
+  margin: 0.05em 0.12em 0 0;
+  color: var(--amber);
+  font-weight: 300;
+}
+
+/* ═══ Vocab Highlight (Immersive Tooltip) ═══ */
+.vocab-highlight{
+  font-weight: 500;
+  color: var(--heading);
+  border-bottom: 1.5px dotted var(--amber-glow);
+  cursor: help;
+  position: relative;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  text-decoration: none;
+}
+
+.vocab-highlight:hover{
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+
+.vocab-highlight::after{
+  content: attr(data-meaning);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--heading);
+  color: var(--cream);
+  font-family: 'Inter', 'Noto Serif SC', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0.5em 0.9em;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.vocab-highlight:hover::after{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ═══ Illustrations (Float) ═══ */
+.illus{
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.illus--right{
+  float: right;
+  width: 42%;
+  margin-left: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.illus--left{
+  float: left;
+  width: 42%;
+  margin-right: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.illus img{
+  width: 100%;
+  display: block;
+}
+
+.illus__cap{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 400;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  padding: 0.5em 0.8em;
+  background: var(--bg-warm);
+  text-align: center;
+}
+
+@media(max-width:600px){
+  .illus{ width: 100% !important; float: none !important; margin-left: 0 !important; margin-right: 0 !important; }
+}
+
+/* ═══ Section Divider ═══ */
+.divider{
+  text-align: center;
+  margin: var(--breath) 0;
+  color: var(--text-faint);
+  font-size: 0.8rem;
+  letter-spacing: 1em;
+  opacity: 0.5;
+  user-select: none;
+}
+
+/* ═══ Comprehension Questions ═══ */
+.questions{
+  margin-bottom: var(--breath);
+}
+
+.questions__header{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: var(--pause);
+  padding-bottom: var(--whisper);
+  border-bottom: 1px solid var(--border);
+}
+
+.question{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.6rem 1.8rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+
+.question__num{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+}
+
+.question__text{
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* — Multiple Choice — */
+.choices{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.choice{
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.choice:hover{
+  border-color: var(--amber);
+  background: var(--amber-soft);
+}
+
+.choice.selected{
+  border-color: var(--amber);
+  background: var(--amber-soft);
+}
+
+.choice.correct{
+  border-color: #4caf50;
+  background: rgba(76,175,80,0.08);
+}
+
+.choice.incorrect{
+  border-color: #e57373;
+  background: rgba(229,115,115,0.08);
+}
+
+.choice__marker{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 500;
+  color: var(--text-faint);
+  transition: all 0.3s ease;
+}
+
+.choice.selected .choice__marker{
+  border-color: var(--amber);
+  background: var(--amber);
+  color: white;
+}
+
+.choice.correct .choice__marker{
+  border-color: #4caf50;
+  background: #4caf50;
+  color: white;
+}
+
+.choice.incorrect .choice__marker{
+  border-color: #e57373;
+  background: #e57373;
+  color: white;
+}
+
+.choice__text{
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* — Open Answer — */
+.open-answer{
+  margin-top: 0.8rem;
+}
+
+.open-answer__toggle{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: none;
+  border: 1px solid var(--amber);
+  border-radius: 20px;
+  padding: 0.4em 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.open-answer__toggle:hover{
+  background: var(--amber);
+  color: white;
+}
+
+.open-answer__content{
+  display: none;
+  margin-top: 0.8rem;
+  padding: 1rem;
+  background: var(--bg-warm);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-light);
+}
+
+.open-answer__content.show{
+  display: block;
+  animation: fadeSlideUp 0.4s ease;
+}
+
+/* ═══ Footer ═══ */
+.page-footer{
+  text-align: center;
+  padding: var(--pause) 0 var(--breath);
+  border-top: 1px solid var(--border);
+}
+
+.page-footer__text{
+  font-family: 'Inter', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  opacity: 0.5;
+}
+
+/* ═══ Scroll Reveal ═══ */
+.reveal{
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══ Keyframes ═══ */
+@keyframes fadeSlideUp{
+  from{ opacity:0; transform:translateY(8px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* ═══ Responsive ═══ */
+@media(max-width: 600px){
+  html{ font-size: 16px; }
+  .para{ padding-left: 2.4rem; }
+  .ghost-audio{ width: 1.8rem; }
+  .ghost-audio__btn{ width: 18px; height: 18px; }
+  .hero__title{ font-size: 2rem; }
+  .question{ padding: 1.2rem; }
+  .vocab-highlight::after{ 
+    white-space: normal; 
+    max-width: 200px;
+    left: 0;
+    transform: translateX(0) translateY(6px);
+  }
+  .vocab-highlight:hover::after{
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* ═══ Print ═══ */
+@media print{
+  .ghost-audio, .full-audio, .back-nav, .vocab-chart{ display: none !important; }
+  .para{ padding-left: 0; }
+  .reveal{ opacity: 1 !important; transform: none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <!-- ═══ Back Nav ═══ -->
+  <nav class="back-nav">
+    <a href="../../" id="back-link">Reading Hub</a>
+  </nav>
+
+  <!-- ═══ Hero ═══ -->
+  <header class="hero reveal">
+    <div class="hero__image-wrap">
+      <img class="hero__image" src="./hero.png" alt="A warm kitchen scene with a bowl of steaming beef noodle soup, mother standing at the stove in amber light">
+    </div>
+
+    <div class="meta-badges">
+      <span class="badge badge--level">LV. 3 / 5</span>
+      <span class="badge badge--style">The Scholar</span>
+      <span class="badge">2026-04-22</span>
+      <span class="badge">5 paragraphs</span>
+    </div>
+
+    <h1 class="hero__title">Every Drop</h1>
+    <p class="hero__subtitle">一碗牛肉面，六年的沉默，与一个没有说出口的拥抱</p>
+    <span class="hero__divider"></span>
+  </header>
+
+  <!-- ═══ Full Audio ═══ -->
+  <div class="full-audio reveal" id="full-audio-section">
+    <div class="full-audio__icon" id="full-audio-btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/full_art-1776817133167_20260422081958_a479a5e2.mp3">
+      <svg class="play-icon" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      <svg class="pause-icon" viewBox="0 0 24 24"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
+    </div>
+    <div class="full-audio__info">
+      <span class="full-audio__label">Full Article Audio</span>
+      <span class="full-audio__title">Listen to the complete story</span>
+    </div>
+  </div>
+
+  <!-- ═══ Vocab Star Chart ═══ -->
+  <div class="vocab-chart reveal">
+    <p class="vocab-chart__header">✦ Target Vocabulary</p>
+    <ul class="vocab-chart__list">
+      <li class="vocab-star">
+        <span class="vocab-star__word">precipitate</span>
+        <span class="vocab-star__hint">v. 促使；引发</span>
+      </li>
+      <li class="vocab-star">
+        <span class="vocab-star__word">intact</span>
+        <span class="vocab-star__hint">adj. 完整的；未受损的</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ═══ Article Body ═══ -->
+  <article class="article">
+
+    <!-- Paragraph 1 -->
+    <div class="para para--first reveal" id="para-1">
+      <div class="ghost-audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-0_20260422081955_91e82fbc.mp3" aria-label="Play paragraph 1">
+          <svg class="play-icon" viewBox="0 0 24 24"><polygon points="8,4 20,12 8,20"/></svg>
+          <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <span class="ghost-audio__num">01</span>
+      </div>
+      <p class="para__text">The smell hit her before she even sat down. Her mother had made niú ròu miàn — the beef noodle soup her father used to request every Sunday. She had not eaten it in six years.</p>
+    </div>
+
+    <!-- Paragraph 2 with right illustration -->
+    <div class="para reveal" id="para-2">
+      <div class="ghost-audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-1_20260422081956_5d6ed127.mp3" aria-label="Play paragraph 2">
+          <svg class="play-icon" viewBox="0 0 24 24"><polygon points="8,4 20,12 8,20"/></svg>
+          <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <span class="ghost-audio__num">02</span>
+      </div>
+      <figure class="illus illus--right">
+        <img src="./scene.png" alt="Father's hands wrapped around a ceramic bowl, reading glasses on the table">
+        <figcaption class="illus__cap">His hands wrapped around the same bowl</figcaption>
+      </figure>
+      <p class="para__text">She <span class="vocab-highlight" data-meaning="促使，引发 — to cause suddenly">precipitated</span> nothing. She just picked up her chopsticks. But the first sip of broth did something she was not ready for: it pulled her back to a kitchen table in 2008, her father's hands wrapped around the same bowl, his reading glasses still on.</p>
+    </div>
+
+    <!-- Paragraph 3 -->
+    <div class="para reveal" id="para-3">
+      <div class="ghost-audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-2_20260422081956_d47db2ad.mp3" aria-label="Play paragraph 3">
+          <svg class="play-icon" viewBox="0 0 24 24"><polygon points="8,4 20,12 8,20"/></svg>
+          <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <span class="ghost-audio__num">03</span>
+      </div>
+      <p class="para__text">The memory arrived <span class="vocab-highlight" data-meaning="完整的，未受损的 — whole, undamaged">intact</span> — not blurry the way old things usually are, but sharp. The sound of the spoon against ceramic. The way he always blew on it three times before drinking.</p>
+    </div>
+
+    <!-- Paragraph 4 with left illustration -->
+    <div class="para reveal" id="para-4">
+      <div class="ghost-audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-3_20260422081957_745a9ae3.mp3" aria-label="Play paragraph 4">
+          <svg class="play-icon" viewBox="0 0 24 24"><polygon points="8,4 20,12 8,20"/></svg>
+          <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <span class="ghost-audio__num">04</span>
+      </div>
+      <figure class="illus illus--left">
+        <img src="./emotion.png" alt="Woman at the table, chopsticks paused, mother's back at the stove">
+        <figcaption class="illus__cap">Her mother did not turn around</figcaption>
+      </figure>
+      <p class="para__text">She put her chopsticks down. Her mother, standing at the stove, did not turn around. Maybe she already knew. Maybe that was the whole point of making it today.</p>
+    </div>
+
+    <!-- Paragraph 5 -->
+    <div class="para reveal" id="para-5">
+      <div class="ghost-audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-4_20260422081958_3e250087.mp3" aria-label="Play paragraph 5">
+          <svg class="play-icon" viewBox="0 0 24 24"><polygon points="8,4 20,12 8,20"/></svg>
+          <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <span class="ghost-audio__num">05</span>
+      </div>
+      <p class="para__text">She almost cried. She did not. She picked up the chopsticks again and finished every drop.</p>
+    </div>
+
+  </article>
+
+  <!-- ═══ Divider ═══ -->
+  <div class="divider">· · ·</div>
+
+  <!-- ═══ Comprehension Questions ═══ -->
+  <section class="questions reveal">
+    <p class="questions__header">Comprehension</p>
+
+    <!-- Q1 -->
+    <div class="question" id="q1">
+      <p class="question__num">Question 01</p>
+      <p class="question__text">What does the narrator mean by "She precipitated nothing"?</p>
+      <ul class="choices">
+        <li class="choice" data-correct="false" onclick="selectChoice(this)">
+          <span class="choice__marker">A</span>
+          <span class="choice__text">She caused a big argument with her mother.</span>
+        </li>
+        <li class="choice" data-correct="true" onclick="selectChoice(this)">
+          <span class="choice__marker">B</span>
+          <span class="choice__text">She did not cause or provoke any reaction — she simply acted.</span>
+        </li>
+        <li class="choice" data-correct="false" onclick="selectChoice(this)">
+          <span class="choice__marker">C</span>
+          <span class="choice__text">She accidentally dropped something on the floor.</span>
+        </li>
+        <li class="choice" data-correct="false" onclick="selectChoice(this)">
+          <span class="choice__marker">D</span>
+          <span class="choice__text">She refused to eat the food her mother prepared.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" id="q2">
+      <p class="question__num">Question 02</p>
+      <p class="question__text">The word "intact" in paragraph 3 most nearly means:</p>
+      <ul class="choices">
+        <li class="choice" data-correct="false" onclick="selectChoice(this)">
+          <span class="choice__marker">A</span>
+          <span class="choice__text">Faded and distant, like most old memories.</span>
+        </li>
+        <li class="choice" data-correct="false" onclick="selectChoice(this)">
+          <span class="choice__marker">B</span>
+          <span class="choice__text">Painful and difficult to process.</span>
+        </li>
+        <li class="choice" data-correct="true" onclick="selectChoice(this)">
+          <span class="choice__marker">C</span>
+          <span class="choice__text">Complete and undamaged, preserved in full clarity.</span>
+        </li>
+        <li class="choice" data-correct="false" onclick="selectChoice(this)">
+          <span class="choice__marker">D</span>
+          <span class="choice__text">Broken into fragments that don't fit together.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Q3 (Open) -->
+    <div class="question" id="q3">
+      <p class="question__num">Question 03 · 开放题</p>
+      <p class="question__text">为什么母亲选择在今天做牛肉面？她"不转身"这个细节暗示了什么？请用中文作答。</p>
+      <div class="open-answer">
+        <button class="open-answer__toggle" onclick="toggleAnswer(this)">Show Suggested Answer</button>
+        <div class="open-answer__content">
+          <p>母亲很可能是有意在某个特殊的日子（也许是父亲的忌日或生日）做了这道菜，用食物代替语言来唤起对已故亲人的共同回忆。她"不转身"这个细节暗示了三层含义：一是她早已预料到女儿的情绪反应（"Maybe she already knew"）；二是她自己也在克制着同样的悲伤；三是她用不打扰的方式给女儿留出了感受和消化情绪的私密空间。这是一种东方式的含蓄之爱——不用语言，而用一碗面来表达"我记得，我也想他"。</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="page-footer">
+    <p class="page-footer__text">Reading Hub · The Scholar · 留白 × 間 × Natural Light</p>
+  </footer>
+
+</main>
+
+<!-- ═══ Hidden Audio Elements ═══ -->
+<audio id="audio-full" preload="none" src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/full_art-1776817133167_20260422081958_a479a5e2.mp3"></audio>
+<audio id="audio-p1" preload="none" src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-0_20260422081955_91e82fbc.mp3"></audio>
+<audio id="audio-p2" preload="none" src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-1_20260422081956_5d6ed127.mp3"></audio>
+<audio id="audio-p3" preload="none" src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-2_20260422081956_d47db2ad.mp3"></audio>
+<audio id="audio-p4" preload="none" src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-3_20260422081957_745a9ae3.mp3"></audio>
+<audio id="audio-p5" preload="none" src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776817133168-4_20260422081958_3e250087.mp3"></audio>
+
+<script>
+// ═══════════════════════════════════════════
+// Ghost Audio — Single-track mutual exclusion
+// ═══════════════════════════════════════════
+
+const audioElements = {
+  full: document.getElementById('audio-full'),
+  p1: document.getElementById('audio-p1'),
+  p2: document.getElementById('audio-p2'),
+  p3: document.getElementById('audio-p3'),
+  p4: document.getElementById('audio-p4'),
+  p5: document.getElementById('audio-p5'),
+};
+
+let currentAudio = null;
+let currentBtn = null;
+let currentPara = null;
+
+function stopAll() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+  if (currentBtn) {
+    currentBtn.classList.remove('playing');
+  }
+  if (currentPara) {
+    currentPara.classList.remove('playing');
+  }
+  currentAudio = null;
+  currentBtn = null;
+  currentPara = null;
+}
+
+// Full audio button
+const fullBtn = document.getElementById('full-audio-btn');
+fullBtn.addEventListener('click', () => {
+  const audio = audioElements.full;
+  if (currentAudio === audio && !audio.paused) {
+    stopAll();
+    return;
+  }
+  stopAll();
+  currentAudio = audio;
+  currentBtn = fullBtn;
+  fullBtn.classList.add('playing');
+  audio.play();
+});
+
+audioElements.full.addEventListener('ended', () => {
+  stopAll();
+});
+
+// Paragraph ghost audio buttons
+const ghostBtns = document.querySelectorAll('.ghost-audio__btn');
+ghostBtns.forEach((btn, index) => {
+  const audioKey = 'p' + (index + 1);
+  const audio = audioElements[audioKey];
+  const para = btn.closest('.para');
+
+  btn.addEventListener('click', () => {
+    if (currentAudio === audio && !audio.paused) {
+      stopAll();
+      return;
+    }
+    stopAll();
+    currentAudio = audio;
+    currentBtn = btn;
+    currentPara = para;
+    btn.classList.add('playing');
+    para.classList.add('playing');
+    audio.play();
+  });
+
+  audio.addEventListener('ended', () => {
+    if (currentAudio === audio) {
+      stopAll();
+    }
+  });
+});
+
+// ═══════════════════════════════════════════
+// Scroll Reveal — IntersectionObserver
+// ═══════════════════════════════════════════
+
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 60);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+// ═══════════════════════════════════════════
+// Choice Selection — Elegant Interaction
+// ═══════════════════════════════════════════
+
+function selectChoice(el) {
+  const question = el.closest('.question');
+  const choices = question.querySelectorAll('.choice');
+  
+  // Already answered
+  if (question.dataset.answered) return;
+  
+  question.dataset.answered = 'true';
+  
+  const isCorrect = el.dataset.correct === 'true';
+  
+  // Mark selected
+  el.classList.add('selected');
+  
+  // Reveal correct/incorrect after brief delay
+  setTimeout(() => {
+    choices.forEach(c => {
+      if (c.dataset.correct === 'true') {
+        c.classList.add('correct');
+      } else if (c === el && !isCorrect) {
+        c.classList.add('incorrect');
+      }
+    });
+  }, 300);
+}
+
+// ═══════════════════════════════════════════
+// Open Answer Toggle
+// ═══════════════════════════════════════════
+
+function toggleAnswer(btn) {
+  const content = btn.nextElementSibling;
+  content.classList.toggle('show');
+  btn.textContent = content.classList.contains('show') ? 'Hide Answer' : 'Show Suggested Answer';
+}
+</script>
+
+</body>
+</html>
