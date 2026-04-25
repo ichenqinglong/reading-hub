@@ -5,132 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Smoothie Stand Bluff — 沉浸式阅读 | Reading Hub</title>
 <meta name="description" content="A teenage smoothie-stand worker and her shift lead discover that the best way to disarm an angry customer is a brilliantly executed fake firing.">
-<link rel="stylesheet" href="../../assets/base.css">
-<link rel="stylesheet" href="./theme.css">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<main class="page">
+<main class="stage">
 
-  <nav class="back-nav"><a href="../../" id="back-link">Reading Hub</a></nav>
+  <nav class="back-nav"><a href="../../">Reading Hub</a></nav>
 
-  <!-- Hero -->
-  <header class="hero reveal">
-    <div class="hero__image-wrap">
-      <img class="hero__image" src="./hero.png" alt="A bright mall smoothie stand with a teenage girl behind the counter, warm golden lighting">
-    </div>
-    <div class="meta-badges">
+  <!-- ═══ PLAYBILL (no hero image — title-first, theatrical) ═══ -->
+  <header class="playbill reveal">
+    <p class="playbill__eyebrow">A Story in Three Acts</p>
+    <h1 class="playbill__title">The Smoothie<br>Stand Bluff</h1>
+    <p class="playbill__subtitle">一个假装开除的把戏，让愤怒的顾客自己道了歉</p>
+    <div class="playbill__meta">
       <span class="badge badge--level">LV. 3 / 5</span>
       <span class="badge badge--style">The Stage</span>
       <span class="badge">2026-04-23</span>
-      <span class="badge">5 paragraphs</span>
     </div>
-    <h1 class="hero__title">The Smoothie Stand Bluff</h1>
-    <p class="hero__subtitle">一个假装开除的把戏，让愤怒的顾客自己道了歉</p>
-    <span class="hero__divider"></span>
   </header>
 
   <!-- Full Audio -->
-  <div class="full-audio reveal" id="full-audio-section">
+  <div class="full-audio reveal">
     <div class="full-audio__icon" id="full-audio-btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/full_art-1776894041317_v2_20260423054256_4d759907.mp3">
       <svg class="play-icon" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
       <svg class="pause-icon" viewBox="0 0 24 24"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
     </div>
-    <div class="full-audio__info">
-      <span class="full-audio__label">Full Article Audio</span>
-      <span class="full-audio__title">Listen to the complete story</span>
-    </div>
+    <span class="full-audio__label">Listen to the complete story</span>
   </div>
 
-  <!-- Vocab Star Chart -->
-  <div class="vocab-chart reveal">
-    <p class="vocab-chart__header">✦ Target Vocabulary</p>
-    <ul class="vocab-chart__list">
-      <li class="vocab-star"><span class="vocab-star__word">tactics</span><span class="vocab-star__hint">策略，手段</span></li>
-      <li class="vocab-star"><span class="vocab-star__word">intimidating</span><span class="vocab-star__hint">令人畏惧的</span></li>
-      <li class="vocab-star"><span class="vocab-star__word">capitulate</span><span class="vocab-star__hint">屈服，投降</span></li>
-      <li class="vocab-star"><span class="vocab-star__word">tact</span><span class="vocab-star__hint">圆滑，得体</span></li>
-    </ul>
+  <!-- Vocab Strip (horizontal ticker, not grid) -->
+  <div class="vocab-strip reveal">
+    <span class="vocab-chip"><span class="vocab-chip__word">tactics</span><span class="vocab-chip__hint">策略</span></span>
+    <span class="vocab-chip"><span class="vocab-chip__word">intimidating</span><span class="vocab-chip__hint">令人畏惧的</span></span>
+    <span class="vocab-chip"><span class="vocab-chip__word">capitulate</span><span class="vocab-chip__hint">屈服</span></span>
+    <span class="vocab-chip"><span class="vocab-chip__word">tact</span><span class="vocab-chip__hint">圆滑</span></span>
   </div>
 
-  <!-- Article Body -->
-  <article class="article">
+  <!-- ═══════════ ACT I: THE SETUP ═══════════ -->
+  <section class="act reveal">
+    <div class="act__label">Act I · The Setup</div>
 
-    <div class="para para--first reveal" id="para-1">
-      <div class="ghost-audio">
-        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-0_20260423054152_bf549645.mp3" aria-label="Play paragraph 1">
+    <div class="scene reveal" id="para-1">
+      <div class="scene__audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-0_20260423054152_bf549645.mp3" aria-label="Play">
           <svg class="play-icon" viewBox="0 0 24 24"><polygon points="7,4 19,12 7,20"/></svg>
           <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="3" height="16"/><rect x="15" y="4" width="3" height="16"/></svg>
         </button>
-        <span class="ghost-audio__num">01</span>
+        <span class="scene__num">01</span>
       </div>
-      <p class="para__text">Taylor was seventeen and working weekends at a mall smoothie stand when she learned that the best way to handle an angry customer was not to argue back.</p>
+      <p class="scene__text">Taylor was seventeen and working weekends at a mall smoothie stand when she learned that the best way to handle an angry customer was not to argue back.</p>
     </div>
 
-    <div class="para reveal" id="para-2">
-      <div class="ghost-audio">
-        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-1_20260423054159_28b703e3.mp3" aria-label="Play paragraph 2">
+    <!-- Illustration: the scene -->
+    <figure class="illus-break reveal">
+      <img src="./hero.png" alt="A bright mall smoothie stand with Taylor behind the counter">
+      <figcaption class="illus-break__cap">Working weekends at a mall smoothie stand</figcaption>
+    </figure>
+
+    <div class="scene reveal" id="para-2">
+      <div class="scene__audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-1_20260423054159_28b703e3.mp3" aria-label="Play">
           <svg class="play-icon" viewBox="0 0 24 24"><polygon points="7,4 19,12 7,20"/></svg>
           <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="3" height="16"/><rect x="15" y="4" width="3" height="16"/></svg>
         </button>
-        <span class="ghost-audio__num">02</span>
+        <span class="scene__num">02</span>
       </div>
-      <figure class="illus illus--right">
-        <img src="./scene-01.png" alt="Ethan stepping in stone-faced, extending his hand for Taylor's badge while an angry customer watches">
-        <figcaption class="illus__cap">Ethan stepped in, stone-faced</figcaption>
+      <figure class="illus-inline illus-inline--right">
+        <img src="./scene-01.png" alt="Ethan stepping in stone-faced, extending his hand for Taylor's badge">
+        <figcaption class="illus-inline__cap">Ethan stepped in, stone-faced</figcaption>
       </figure>
-      <p class="para__text">Her shift lead, Ethan, had worked out the <span class="vocab-highlight" data-meaning="策略，手段 — clever plans or methods">tactics</span> first. One Saturday, a man in a polo shirt started yelling because his drink was not sweet enough. Before Taylor could respond, Ethan stepped in, stone-faced. "Taylor, hand over your badge. You are suspended for the rest of the day — and I am docking your pay."</p>
+      <p class="scene__text">Her shift lead, Ethan, had worked out the <span class="vocab-highlight" data-meaning="策略，手段 — clever plans or methods">tactics</span> first. One Saturday, a man in a polo shirt started yelling because his drink was not sweet enough. Before Taylor could respond, Ethan stepped in, stone-faced.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ ACT II: THE PERFORMANCE ═══════════ -->
+  <section class="act reveal">
+    <div class="act__label">Act II · The Performance</div>
+
+    <!-- Ethan's line — centered dialogue block -->
+    <div class="dialogue reveal">
+      <p class="dialogue__speaker">Ethan</p>
+      <p class="dialogue__line">"Taylor, hand over your badge. You are suspended for the rest of the day — and I am docking your pay."</p>
     </div>
 
-    <div class="para reveal" id="para-3">
-      <div class="ghost-audio">
-        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-2_20260423054203_719d0198.mp3" aria-label="Play paragraph 3">
+    <div class="scene reveal" id="para-3">
+      <div class="scene__audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-2_20260423054203_719d0198.mp3" aria-label="Play">
           <svg class="play-icon" viewBox="0 0 24 24"><polygon points="7,4 19,12 7,20"/></svg>
           <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="3" height="16"/><rect x="15" y="4" width="3" height="16"/></svg>
         </button>
-        <span class="ghost-audio__num">03</span>
+        <span class="scene__num">03</span>
       </div>
-      <p class="para__text">Taylor played along, eyes wide. "Please, Ethan. I need that money for my phone bill."</p>
+      <p class="scene__text">Taylor played along, eyes wide.</p>
     </div>
 
-    <div class="para reveal" id="para-4">
-      <div class="ghost-audio">
-        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-3_20260423054208_f0e33ce7.mp3" aria-label="Play paragraph 4">
+    <!-- Taylor's line -->
+    <div class="dialogue reveal">
+      <p class="dialogue__speaker">Taylor</p>
+      <p class="dialogue__line">"Please, Ethan. I need that money for my phone bill."</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ ACT III: THE REVERSAL ═══════════ -->
+  <section class="act reveal">
+    <div class="act__label">Act III · The Reversal</div>
+
+    <div class="scene reveal" id="para-4">
+      <div class="scene__audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-3_20260423054208_f0e33ce7.mp3" aria-label="Play">
           <svg class="play-icon" viewBox="0 0 24 24"><polygon points="7,4 19,12 7,20"/></svg>
           <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="3" height="16"/><rect x="15" y="4" width="3" height="16"/></svg>
         </button>
-        <span class="ghost-audio__num">04</span>
+        <span class="scene__num">04</span>
       </div>
-      <figure class="illus illus--left">
-        <img src="./scene-02.png" alt="The man in a polo shirt looking sheepish and apologizing, while two workers exchange a knowing glance">
-        <figcaption class="illus__cap">He capitulated completely, apologizing twice</figcaption>
+      <figure class="illus-inline illus-inline--left">
+        <img src="./scene-02.png" alt="The man in polo shirt looking sheepish and apologizing">
+        <figcaption class="illus-inline__cap">He capitulated completely</figcaption>
       </figure>
-      <p class="para__text">The man went quiet. What had been <span class="vocab-highlight" data-meaning="令人畏惧的 — making you feel frightened or nervous">intimidating</span> thirty seconds ago — a grown adult, red-faced, leaning over the counter — suddenly looked small. He <span class="vocab-highlight" data-meaning="屈服，投降 — gave in and stopped resisting">capitulated</span> completely, apologizing twice before he left.</p>
+      <p class="scene__text">The man went quiet. What had been <span class="vocab-highlight" data-meaning="令人畏惧的 — making you feel frightened">intimidating</span> thirty seconds ago — a grown adult, red-faced, leaning over the counter — suddenly looked small. He <span class="vocab-highlight" data-meaning="屈服，投降 — gave in completely">capitulated</span> completely, apologizing twice before he left.</p>
     </div>
 
-    <div class="para reveal" id="para-5">
-      <div class="ghost-audio">
-        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-4_20260423054253_568524aa.mp3" aria-label="Play paragraph 5">
+    <!-- The reversal moment — visually distinct -->
+    <div class="reversal reveal">
+      <p class="reversal__text">Ethan had handled the whole thing with <span class="vocab-highlight" data-meaning="圆滑，得体 — skill in dealing with others without offense">tact</span>: no argument, no raised voice, just a mirror held up to the customer's own behavior.</p>
+    </div>
+
+    <div class="scene reveal" id="para-5">
+      <div class="scene__audio">
+        <button class="ghost-audio__btn" data-audio-src="https://chenqinglong--study.oss-cn-beijing.aliyuncs.com/typora/audio/apar-1776894041317-4_20260423054253_568524aa.mp3" aria-label="Play">
           <svg class="play-icon" viewBox="0 0 24 24"><polygon points="7,4 19,12 7,20"/></svg>
           <svg class="pause-icon" viewBox="0 0 24 24"><rect x="6" y="4" width="3" height="16"/><rect x="15" y="4" width="3" height="16"/></svg>
         </button>
-        <span class="ghost-audio__num">05</span>
+        <span class="scene__num">05</span>
       </div>
-      <figure class="illus illus--right">
-        <img src="./emotion.png" alt="Taylor wiping down the counter with a quiet, satisfied smile">
-        <figcaption class="illus__cap">Deeply satisfying</figcaption>
+      <figure class="illus-inline illus-inline--right">
+        <img src="./emotion.png" alt="Taylor wiping down the counter with a satisfied smile">
+        <figcaption class="illus-inline__cap">Deeply satisfying</figcaption>
       </figure>
-      <p class="para__text">Ethan had handled the whole thing with <span class="vocab-highlight" data-meaning="圆滑，得体 — skill in dealing with others without causing offense">tact</span>: no argument, no raised voice, just a mirror held up to the customer's own behavior. They have used the trick a dozen times since. It works almost every time — and watching someone realize their words could actually cost a teenager their pay is, Taylor says, deeply satisfying.</p>
+      <p class="scene__text">They have used the trick a dozen times since. It works almost every time — and watching someone realize their words could actually cost a teenager their pay is, Taylor says, deeply satisfying.</p>
     </div>
+  </section>
 
-  </article>
+  <!-- ═══ Curtain ═══ -->
+  <div class="curtain">
+    <span class="curtain__line"></span>
+    <span class="curtain__text">Curtain</span>
+  </div>
 
-  <div class="divider">· · ·</div>
-
-  <!-- Comprehension Questions -->
+  <!-- ═══ Comprehension ═══ -->
   <section class="questions">
     <h2 class="questions__header">Comprehension</h2>
 
-    <div class="question reveal" id="q1">
+    <div class="question reveal">
       <p class="question__num">Question 01</p>
       <p class="question__text">What did Ethan do when the customer started yelling at Taylor?</p>
       <div class="open-answer">
@@ -139,7 +165,7 @@
       </div>
     </div>
 
-    <div class="question reveal" id="q2">
+    <div class="question reveal">
       <p class="question__num">Question 02</p>
       <p class="question__text">In the story, "<strong>capitulated</strong>" most likely means...</p>
       <ul class="choices">
@@ -150,18 +176,18 @@
       </ul>
     </div>
 
-    <div class="question reveal" id="q3">
+    <div class="question reveal">
       <p class="question__num">Question 03</p>
       <p class="question__text">为什么这个假开除的把戏几乎每次都有效？顾客的心理是什么？</p>
       <div class="open-answer">
         <button class="open-answer__toggle" onclick="toggleAnswer(this)">Show Suggested Answer</button>
-        <div class="open-answer__content">这个把戏之所以有效，是因为它像一面镜子（a mirror held up to the customer's own behavior）。当顾客看到自己的愤怒似乎真的导致一个十几岁的孩子被处罚、失去收入时，他们内心的愧疚感会立刻被激活。他们意识到自己正在对一个比自己弱势得多的人施压，这种认知让"intimidating"的行为瞬间变得不可持续，于是选择 capitulate — 让步道歉。</div>
+        <div class="open-answer__content">这个把戏之所以有效，是因为它像一面镜子（a mirror held up to the customer's own behavior）。当顾客看到自己的愤怒似乎真的导致一个十几岁的孩子被处罚、失去收入时，愧疚感会立刻被激活，于是选择 capitulate — 让步道歉。</div>
       </div>
     </div>
 
-    <div class="question reveal" id="q4">
+    <div class="question reveal">
       <p class="question__num">Question 04</p>
-      <p class="question__text">用 <strong>tactics</strong> 造一个句子：场景提示 — 你和朋友在讨论怎么说服父母让你出去旅行（用英文写，不超过 15 个词）</p>
+      <p class="question__text">用 <strong>tactics</strong> 造一个句子（不超过 15 个词）</p>
       <div class="open-answer">
         <button class="open-answer__toggle" onclick="toggleAnswer(this)">Show Suggested Answer</button>
         <div class="open-answer__content">Example: "We need better tactics — maybe showing them the safety plan will work."</div>
@@ -169,8 +195,8 @@
     </div>
   </section>
 
-  <footer class="page-footer">
-    <p class="page-footer__text">Reading Hub · The Stage · 留白 × 間 × Natural Light</p>
+  <footer class="stage-footer">
+    <p class="stage-footer__text">Reading Hub · The Stage · 留白 × 間 × Natural Light</p>
   </footer>
 
 </main>

@@ -25,7 +25,7 @@ function stopAll() {
 document.querySelectorAll('.ghost-audio__btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const src = btn.dataset.audioSrc;
-    const para = btn.closest('.para');
+    const para = btn.closest('.para') || btn.closest('.scene');
     if (currentBtn === btn && currentAudio && !currentAudio.paused) { stopAll(); return; }
     stopAll();
     const audio = getAudio(src);

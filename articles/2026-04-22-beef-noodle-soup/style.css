@@ -253,3 +253,61 @@ body{ min-height:100vh; overflow-x:hidden; }
   .para{ padding-left:0; }
   .reveal{ opacity:1!important; transform:none!important; }
 }
+/**
+ * The Scholar — 经典文学风
+ * 温润 · 沉淀 · 慢阅读
+ * Beef Noodle Soup: 亲情、食物、六年沉默
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;600&display=swap');
+
+:root{
+  --bg:        #faf8f4;
+  --bg-warm:   #f5f0e8;
+  --surface:   #ffffff;
+  --text:      #4a4039;
+  --text-light:#7a7068;
+  --text-faint:#a09888;
+  --heading:   #2d2520;
+  --accent:    #c47530;
+  --accent-alt:#b8860b;
+  --accent-soft:rgba(196,117,48,0.10);
+  --accent-glow:rgba(196,117,48,0.25);
+  --accent-border:rgba(196,117,48,0.12);
+  --tooltip-text:#f0e6d4;
+  --border:    #e8e0d4;
+  --shadow:    rgba(80,60,40,0.06);
+  --breath:    clamp(3rem,8vh,6rem);
+  --pause:     clamp(1.5rem,4vh,3rem);
+  --whisper:   clamp(0.8rem,2vh,1.2rem);
+}
+
+html{ font-size:18px; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Cormorant Garamond','Noto Serif SC',Georgia,serif;
+  line-height:1.9;
+}
+
+/* Ambient warm glow */
+body::before{
+  content:''; position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 30% 20%, rgba(196,117,48,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 500px at 75% 80%, rgba(184,134,11,0.03) 0%, transparent 50%);
+  z-index:-1; pointer-events:none;
+}
+
+/* Scholar title font */
+.hero__title{ font-family:'Cormorant Garamond',serif; }
+.hero__subtitle{ font-family:'Noto Serif SC',serif; }
+.vocab-star__word{ font-family:'Cormorant Garamond',serif; }
+
+/* Drop Cap — first paragraph */
+.para--first .para__text::first-letter{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.8em; float:left; line-height:.8;
+  margin:.05em .12em 0 0; color:var(--accent); font-weight:300;
+}
