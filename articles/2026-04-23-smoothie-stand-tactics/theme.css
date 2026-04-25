@@ -1,0 +1,79 @@
+/**
+ * The Stage — 现代戏剧风
+ * 明亮 · 轻快 · 有节奏的反转张力
+ * Smoothie Stand Bluff: 职场智慧、青少年机智、幽默反击
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&family=Inter:wght@300;400;500&family=Noto+Serif+SC:wght@300;400&display=swap');
+
+:root{
+  /* — Fresh Coral & Teal palette — */
+  --bg:        #fefcfa;
+  --bg-warm:   #fff5ee;
+  --surface:   #ffffff;
+  --text:      #3d3832;
+  --text-light:#6b6158;
+  --text-faint:#9a9088;
+  --heading:   #1f1b17;
+  --accent:    #e06040;       /* Coral — energetic, youthful */
+  --accent-alt:#1a9988;       /* Teal — counterpoint, clever */
+  --accent-soft:rgba(224,96,64,0.08);
+  --accent-glow:rgba(224,96,64,0.22);
+  --accent-border:rgba(224,96,64,0.15);
+  --tooltip-text:#fff5ee;
+  --border:    #ece4da;
+  --shadow:    rgba(100,70,40,0.05);
+  --breath:    clamp(3rem,8vh,6rem);
+  --pause:     clamp(1.5rem,4vh,3rem);
+  --whisper:   clamp(0.8rem,2vh,1.2rem);
+}
+
+html{ font-size:17px; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans','Noto Serif SC',sans-serif;
+  line-height:1.85;
+}
+
+/* Ambient light — coral & teal wisps */
+body::before{
+  content:''; position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse 700px 500px at 25% 15%, rgba(224,96,64,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 500px 400px at 80% 75%, rgba(26,153,136,0.03) 0%, transparent 50%);
+  z-index:-1; pointer-events:none;
+}
+
+/* Title — dramatic display serif */
+.hero__title{
+  font-family:'DM Serif Display',serif;
+  letter-spacing:.02em;
+}
+.hero__subtitle{ font-family:'Noto Serif SC',serif; }
+.vocab-star__word{ font-family:'DM Serif Display',serif; }
+
+/* Drop Cap — coral accent, modern serif */
+.para--first .para__text::first-letter{
+  font-family:'DM Serif Display',serif;
+  font-size:3.4em; float:left; line-height:.82;
+  margin:.06em .14em 0 0; color:var(--accent); font-weight:400;
+}
+
+/* Teal accent for style badge to show dual-tone palette */
+.badge--style{
+  border-color:var(--accent-alt);
+  color:var(--accent-alt);
+}
+
+/* Slightly rounded, friendlier question cards */
+.question{ border-radius:14px; }
+
+/* Vocab stars use teal for contrast */
+.vocab-star{
+  background:rgba(26,153,136,0.06);
+  border-color:rgba(26,153,136,0.12);
+}
+.vocab-star:hover{ box-shadow:0 4px 12px rgba(26,153,136,0.18); }
+.vocab-star__word{ color:var(--accent-alt); }
