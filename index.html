@@ -11,13 +11,16 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --ink:    #0d0906;
-  --ink2:   #1a1208;
-  --paper:  #e8dcc8;
-  --muted:  #6b5a45;
-  --dim:    #3d2e1e;
-  --accent: #c8843c;
-  --border: rgba(200,132,60,0.15);
+  --sky0:   #daeeff;
+  --sky1:   #c2e0f8;
+  --sky2:   #a8cff0;
+  --cloud:  rgba(255,255,255,0.72);
+  --cloud2: rgba(255,255,255,0.45);
+  --ink:    #1a2e45;
+  --ink2:   #2d4a6a;
+  --muted:  #6a8aaa;
+  --gold:   #c8a050;
+  --gold2:  rgba(200,160,80,0.18);
   --serif:  "Playfair Display",Georgia,serif;
   --serif-zh:"Noto Serif SC",serif;
   --mono:   "IBM Plex Mono",monospace;
@@ -26,133 +29,164 @@
 html{font-size:16px;-webkit-font-smoothing:antialiased}
 
 body{
-  background:var(--ink);
-  color:var(--paper);
-  font-family:var(--serif-zh);
   min-height:100vh;
+  font-family:var(--serif-zh);
+  color:var(--ink);
+  background: var(--sky0);
+  overflow-x:hidden;
 }
 
-/* subtle warm vignette */
-body::before{
-  content:'';
-  position:fixed;inset:0;
+/* ── Sky background ── */
+.sky{
+  position:fixed;inset:0;z-index:0;
   background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(200,132,60,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 20% 100%, rgba(200,100,30,0.03) 0%, transparent 50%);
-  pointer-events:none;z-index:0;
+    linear-gradient(175deg, #f0f8ff 0%, #daeeff 30%, #c2e0f8 65%, #a8cff0 100%);
 }
 
+/* floating cloud layers */
+.sky::before,.sky::after{
+  content:'';
+  position:absolute;
+  border-radius:50%;
+  filter:blur(60px);
+  pointer-events:none;
+}
+.sky::before{
+  width:70vw;height:40vw;
+  top:-10%;left:-10%;
+  background:rgba(255,255,255,0.55);
+}
+.sky::after{
+  width:50vw;height:30vw;
+  bottom:5%;right:-5%;
+  background:rgba(255,255,255,0.4);
+}
+
+/* ── Layout ── */
 .hub{
   position:relative;z-index:1;
-  max-width:700px;
+  max-width:720px;
   margin:0 auto;
   padding:clamp(4rem,10vh,7rem) clamp(1.5rem,5vw,2.5rem) clamp(4rem,8vh,6rem);
 }
 
 /* ── Header ── */
-.header{margin-bottom:clamp(3rem,7vh,5rem)}
+.header{
+  margin-bottom:clamp(3rem,7vh,5rem);
+  text-align:center;
+}
 
 .header__eyebrow{
   font-family:var(--mono);
-  font-size:0.6rem;
-  letter-spacing:0.35em;
+  font-size:0.58rem;
+  letter-spacing:0.4em;
   text-transform:uppercase;
-  color:var(--accent);
-  opacity:0.7;
-  margin-bottom:1.2rem;
+  color:var(--muted);
+  margin-bottom:1.4rem;
 }
 
 .header__title{
   font-family:var(--serif);
   font-weight:900;
-  font-size:clamp(2.4rem,5vw,3.6rem);
-  line-height:1.05;
+  font-size:clamp(3rem,7vw,5rem);
+  line-height:1;
   letter-spacing:-0.02em;
-  color:var(--paper);
-  margin-bottom:1.2rem;
+  color:var(--ink);
+  margin-bottom:0.6rem;
 }
 
 .header__title em{
   font-style:italic;
   font-weight:400;
-  color:var(--accent);
+  color:var(--ink2);
+  opacity:0.7;
 }
 
 .header__sub{
-  font-family:var(--serif-zh);
   font-size:0.88rem;
   font-weight:300;
   color:var(--muted);
-  line-height:1.7;
-  max-width:420px;
+  line-height:1.8;
+  margin-top:1rem;
+}
+
+.header__rule{
+  display:block;
+  width:48px;height:1.5px;
+  background:var(--gold);
+  margin:1.8rem auto 0;
+  opacity:0.7;
 }
 
 /* ── Stats ── */
 .stats{
-  display:flex;gap:2.5rem;
-  padding:1.5rem 0;
-  margin-bottom:clamp(2rem,5vh,3.5rem);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
+  display:flex;justify-content:center;gap:3rem;
+  padding:1.4rem 0;
+  margin-bottom:clamp(2.5rem,5vh,4rem);
+  border-top:1px solid rgba(255,255,255,0.6);
+  border-bottom:1px solid rgba(255,255,255,0.6);
 }
 
 .stat__value{
   font-family:var(--serif);
-  font-size:1.6rem;
+  font-size:1.8rem;
   font-weight:700;
-  color:var(--paper);
-  display:block;
-  line-height:1;
+  color:var(--ink);
+  display:block;line-height:1;
   margin-bottom:0.3rem;
+  text-align:center;
 }
 
 .stat__label{
   font-family:var(--mono);
-  font-size:0.55rem;
+  font-size:0.52rem;
   letter-spacing:0.2em;
   text-transform:uppercase;
   color:var(--muted);
+  text-align:center;
 }
 
-/* ── Card List ── */
-.card-list{display:flex;flex-direction:column}
+/* ── Cards ── */
+.card-list{display:flex;flex-direction:column;gap:1rem}
 
 .card{
   display:grid;
-  grid-template-columns:64px 1fr auto;
-  gap:1.8rem;
+  grid-template-columns:56px 1fr auto;
+  gap:1.6rem;
   align-items:start;
-  padding:1.8rem 0;
-  border-bottom:1px solid var(--border);
+  padding:1.6rem 1.8rem;
+  background:var(--cloud);
+  border:1px solid rgba(255,255,255,0.9);
+  border-radius:16px;
+  box-shadow:
+    0 2px 12px rgba(100,150,200,0.1),
+    0 1px 3px rgba(100,150,200,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.8);
   text-decoration:none;
   color:inherit;
-  position:relative;
-  transition:padding-left 0.3s ease;
+  backdrop-filter:blur(12px);
+  transition:transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.card::before{
-  content:'';
-  position:absolute;left:0;top:0;bottom:0;
-  width:2px;
-  background:var(--accent);
-  transform:scaleY(0);
-  transform-origin:top;
-  transition:transform 0.3s ease;
+.card:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,0.88);
+  box-shadow:
+    0 8px 32px rgba(100,150,200,0.18),
+    0 2px 8px rgba(100,150,200,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.9);
 }
-
-.card:hover{padding-left:1rem}
-.card:hover::before{transform:scaleY(1)}
 
 /* Date */
 .card__date{
   display:flex;flex-direction:column;
   align-items:center;
-  padding-top:0.2rem;
+  padding-top:0.15rem;
 }
 
 .card__month{
   font-family:var(--mono);
-  font-size:0.55rem;
+  font-size:0.52rem;
   letter-spacing:0.15em;
   text-transform:uppercase;
   color:var(--muted);
@@ -160,78 +194,81 @@ body::before{
 
 .card__day{
   font-family:var(--serif);
-  font-size:1.8rem;
+  font-size:1.9rem;
   font-weight:300;
-  color:var(--paper);
+  color:var(--ink);
   line-height:1;
   margin:0.1rem 0;
 }
 
 .card__year{
   font-family:var(--mono);
-  font-size:0.48rem;
-  color:var(--dim);
-  letter-spacing:0.1em;
+  font-size:0.46rem;
+  color:var(--muted);
+  opacity:0.6;
+  letter-spacing:0.08em;
 }
 
 /* Body */
 .card__title{
   font-family:var(--serif);
-  font-size:1.2rem;
+  font-size:1.15rem;
   font-weight:400;
-  color:var(--paper);
+  color:var(--ink);
   line-height:1.35;
-  margin-bottom:0.55rem;
-  transition:color 0.25s;
+  margin-bottom:0.5rem;
+  transition:color 0.2s;
 }
 
-.card:hover .card__title{color:#fff}
+.card:hover .card__title{color:var(--ink2)}
 
 .card__desc{
-  font-size:0.8rem;
+  font-size:0.78rem;
   font-weight:300;
   color:var(--muted);
-  line-height:1.6;
+  line-height:1.65;
   margin-bottom:0.7rem;
 }
 
-.card__tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.card__tags{display:flex;flex-wrap:wrap;gap:0.35rem}
 
 .card__tag{
   font-family:var(--mono);
-  font-size:0.58rem;
+  font-size:0.56rem;
   letter-spacing:0.04em;
-  padding:0.2em 0.65em;
-  border:1px solid var(--border);
-  border-radius:2px;
-  color:var(--accent);
-  opacity:0.8;
+  padding:0.22em 0.7em;
+  border-radius:20px;
+  background:var(--gold2);
+  color:var(--gold);
+  border:1px solid rgba(200,160,80,0.25);
 }
 
 /* Meta */
 .card__meta{
   display:flex;flex-direction:column;
   align-items:flex-end;gap:0.5rem;
-  padding-top:0.2rem;
+  padding-top:0.15rem;
 }
 
 .card__level{
   font-family:var(--mono);
-  font-size:0.58rem;
+  font-size:0.56rem;
   letter-spacing:0.1em;
-  color:var(--accent);
-  border:1px solid rgba(200,132,60,0.4);
-  padding:0.2em 0.6em;
+  color:var(--ink2);
+  border:1px solid rgba(45,74,106,0.25);
+  padding:0.22em 0.65em;
   border-radius:10px;
+  background:rgba(255,255,255,0.5);
 }
 
 .card__arrow{
-  font-size:0.85rem;
-  color:var(--dim);
-  transition:color 0.25s,transform 0.25s;
+  font-size:0.9rem;
+  color:var(--muted);
+  opacity:0.5;
+  transition:opacity 0.2s,transform 0.2s;
 }
 
-.card:hover .card__arrow{color:var(--accent);transform:translateX(3px)}
+.card:hover .card__arrow{opacity:1;transform:translateX(3px)}
 
 /* ── Footer ── */
 .footer{
@@ -241,30 +278,40 @@ body::before{
 
 .footer__text{
   font-family:var(--mono);
-  font-size:0.52rem;
+  font-size:0.5rem;
   letter-spacing:0.3em;
   text-transform:uppercase;
-  color:var(--dim);
+  color:var(--muted);
+  opacity:0.5;
 }
 
 /* ── Entrance ── */
-.card{opacity:0;transform:translateY(10px)}
-.card.in{opacity:1;transform:translateY(0);transition:opacity 0.55s ease,transform 0.55s cubic-bezier(0.2,0.8,0.2,1),padding-left 0.3s ease}
+.card{opacity:0;transform:translateY(14px)}
+.card.in{
+  opacity:1;transform:translateY(0);
+  transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.2,0.8,0.2,1),
+             box-shadow 0.3s ease,background 0.3s ease;
+}
 
 @media(max-width:560px){
-  .card{grid-template-columns:1fr;gap:0.8rem}
+  .card{grid-template-columns:1fr;gap:0.7rem;padding:1.3rem 1.4rem}
   .card__date{flex-direction:row;gap:0.5rem;align-items:baseline}
   .card__meta{flex-direction:row;align-items:center}
+  .stats{gap:2rem}
 }
 </style>
 </head>
 <body>
+
+<div class="sky"></div>
+
 <main class="hub">
 
   <header class="header">
     <p class="header__eyebrow">Immersive English Reading</p>
-    <h1 class="header__title">Reading<br><em>Hub</em></h1>
-    <p class="header__sub">每一篇阅读，都是一件沉浸式设计作品。<br>留白 · 間 · 自然光晕。</p>
+    <h1 class="header__title">Reading <em>Hub</em></h1>
+    <p class="header__sub">每一篇阅读，都是一件沉浸式设计作品<br>留白 · 間 · 自然光晕</p>
+    <span class="header__rule"></span>
   </header>
 
   <div class="stats">
@@ -280,7 +327,6 @@ body::before{
 
   <section class="card-list">
 
-    <!-- 2026-04-25 evacuate (redesigned) -->
     <a class="card" href="./articles/2026-04-25-evacuate/">
       <div class="card__date">
         <span class="card__month">Apr</span>
@@ -301,7 +347,6 @@ body::before{
       </div>
     </a>
 
-    <!-- 2026-04-23 smoothie -->
     <a class="card" href="./articles/2026-04-23-smoothie-stand-tactics/">
       <div class="card__date">
         <span class="card__month">Apr</span>
@@ -324,7 +369,6 @@ body::before{
       </div>
     </a>
 
-    <!-- 2026-04-22 beef noodle -->
     <a class="card" href="./articles/2026-04-22-beef-noodle-soup/">
       <div class="card__date">
         <span class="card__month">Apr</span>
@@ -345,7 +389,6 @@ body::before{
       </div>
     </a>
 
-    <!-- 2026-04-20 data centers -->
     <a class="card" href="./articles/2026-04-20-data-centers/">
       <div class="card__date">
         <span class="card__month">Apr</span>
@@ -375,10 +418,11 @@ body::before{
   </footer>
 
 </main>
+
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.card').forEach((c,i)=>{
-    setTimeout(()=>c.classList.add('in'), 80 + i*90);
+    setTimeout(()=>c.classList.add('in'), 100 + i*100);
   });
 });
 </script>
