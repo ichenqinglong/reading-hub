@@ -3,24 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reading Hub — 沉浸式英语阅读</title>
+<title>Reading Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+SC:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --sky0:   #daeeff;
-  --sky1:   #c2e0f8;
-  --sky2:   #a8cff0;
-  --cloud:  rgba(255,255,255,0.72);
-  --cloud2: rgba(255,255,255,0.45);
-  --ink:    #1a2e45;
-  --ink2:   #2d4a6a;
-  --muted:  #6a8aaa;
-  --gold:   #c8a050;
-  --gold2:  rgba(200,160,80,0.18);
+  --bg:     #f7f4ef;
+  --paper:  #fdfbf8;
+  --ink:    #2a1f12;
+  --ink2:   #4a3828;
+  --muted:  #9a8a72;
+  --rule:   rgba(42,31,18,0.1);
+  --amber:  #8b6914;
   --serif:  "Playfair Display",Georgia,serif;
   --serif-zh:"Noto Serif SC",serif;
   --mono:   "IBM Plex Mono",monospace;
@@ -29,385 +26,318 @@
 html{font-size:16px;-webkit-font-smoothing:antialiased}
 
 body{
-  min-height:100vh;
-  font-family:var(--serif-zh);
+  background:var(--bg);
   color:var(--ink);
-  background: var(--sky0);
-  overflow-x:hidden;
+  font-family:var(--serif-zh);
+  min-height:100vh;
 }
 
-/* ── Sky background ── */
-.sky{
-  position:fixed;inset:0;z-index:0;
-  background:
-    linear-gradient(175deg, #f0f8ff 0%, #daeeff 30%, #c2e0f8 65%, #a8cff0 100%);
-}
-
-/* floating cloud layers */
-.sky::before,.sky::after{
-  content:'';
-  position:absolute;
-  border-radius:50%;
-  filter:blur(60px);
-  pointer-events:none;
-}
-.sky::before{
-  width:70vw;height:40vw;
-  top:-10%;left:-10%;
-  background:rgba(255,255,255,0.55);
-}
-.sky::after{
-  width:50vw;height:30vw;
-  bottom:5%;right:-5%;
-  background:rgba(255,255,255,0.4);
-}
-
-/* ── Layout ── */
 .hub{
-  position:relative;z-index:1;
-  max-width:720px;
+  max-width:640px;
   margin:0 auto;
-  padding:clamp(4rem,10vh,7rem) clamp(1.5rem,5vw,2.5rem) clamp(4rem,8vh,6rem);
+  padding:clamp(5rem,12vh,9rem) clamp(1.8rem,6vw,3rem) clamp(5rem,10vh,8rem);
 }
 
 /* ── Header ── */
 .header{
-  margin-bottom:clamp(3rem,7vh,5rem);
-  text-align:center;
+  margin-bottom:clamp(3.5rem,8vh,6rem);
 }
 
-.header__eyebrow{
+.header__label{
   font-family:var(--mono);
-  font-size:0.58rem;
-  letter-spacing:0.4em;
+  font-size:0.56rem;
+  letter-spacing:0.35em;
   text-transform:uppercase;
   color:var(--muted);
-  margin-bottom:1.4rem;
+  margin-bottom:1.6rem;
 }
 
 .header__title{
   font-family:var(--serif);
-  font-weight:900;
-  font-size:clamp(3rem,7vw,5rem);
-  line-height:1;
-  letter-spacing:-0.02em;
-  color:var(--ink);
-  margin-bottom:0.6rem;
-}
-
-.header__title em{
-  font-style:italic;
   font-weight:400;
-  color:var(--ink2);
-  opacity:0.7;
+  font-size:clamp(2.6rem,5.5vw,4rem);
+  line-height:1.1;
+  color:var(--ink);
+  margin-bottom:1.4rem;
 }
 
-.header__sub{
-  font-size:0.88rem;
+.header__title strong{
+  font-weight:700;
+}
+
+.header__desc{
+  font-size:0.85rem;
   font-weight:300;
   color:var(--muted);
-  line-height:1.8;
-  margin-top:1rem;
+  line-height:1.9;
+  max-width:380px;
 }
 
-.header__rule{
-  display:block;
-  width:48px;height:1.5px;
-  background:var(--gold);
-  margin:1.8rem auto 0;
-  opacity:0.7;
+/* ── Divider ── */
+.divider{
+  width:100%;
+  height:1px;
+  background:var(--rule);
+  margin:clamp(2rem,5vh,3.5rem) 0;
 }
 
 /* ── Stats ── */
 .stats{
-  display:flex;justify-content:center;gap:3rem;
-  padding:1.4rem 0;
-  margin-bottom:clamp(2.5rem,5vh,4rem);
-  border-top:1px solid rgba(255,255,255,0.6);
-  border-bottom:1px solid rgba(255,255,255,0.6);
+  display:flex;
+  gap:2.5rem;
+  margin-bottom:clamp(2.5rem,6vh,4.5rem);
 }
 
-.stat__value{
+.stat__n{
   font-family:var(--serif);
-  font-size:1.8rem;
+  font-size:1.5rem;
   font-weight:700;
-  color:var(--ink);
-  display:block;line-height:1;
+  color:var(--ink2);
+  display:block;
+  line-height:1;
   margin-bottom:0.3rem;
-  text-align:center;
 }
 
-.stat__label{
+.stat__l{
   font-family:var(--mono);
-  font-size:0.52rem;
+  font-size:0.5rem;
   letter-spacing:0.2em;
   text-transform:uppercase;
   color:var(--muted);
-  text-align:center;
 }
 
-/* ── Cards ── */
-.card-list{display:flex;flex-direction:column;gap:1rem}
+/* ── Article list ── */
+.list{
+  display:flex;
+  flex-direction:column;
+}
 
-.card{
+.entry{
   display:grid;
-  grid-template-columns:56px 1fr auto;
+  grid-template-columns:52px 1fr;
   gap:1.6rem;
-  align-items:start;
-  padding:1.6rem 1.8rem;
-  background:var(--cloud);
-  border:1px solid rgba(255,255,255,0.9);
-  border-radius:16px;
-  box-shadow:
-    0 2px 12px rgba(100,150,200,0.1),
-    0 1px 3px rgba(100,150,200,0.08),
-    inset 0 1px 0 rgba(255,255,255,0.8);
+  padding:1.8rem 0;
+  border-bottom:1px solid var(--rule);
   text-decoration:none;
   color:inherit;
-  backdrop-filter:blur(12px);
-  transition:transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition:opacity 0.25s;
 }
 
-.card:hover{
-  transform:translateY(-3px);
-  background:rgba(255,255,255,0.88);
-  box-shadow:
-    0 8px 32px rgba(100,150,200,0.18),
-    0 2px 8px rgba(100,150,200,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.9);
-}
+.entry:first-child{border-top:1px solid var(--rule)}
 
-/* Date */
-.card__date{
-  display:flex;flex-direction:column;
+.entry:hover{opacity:0.72}
+
+/* Date column */
+.entry__date{
+  display:flex;
+  flex-direction:column;
   align-items:center;
-  padding-top:0.15rem;
+  padding-top:0.3rem;
+  gap:0.1rem;
 }
 
-.card__month{
+.entry__mon{
   font-family:var(--mono);
-  font-size:0.52rem;
-  letter-spacing:0.15em;
+  font-size:0.5rem;
+  letter-spacing:0.12em;
   text-transform:uppercase;
   color:var(--muted);
 }
 
-.card__day{
+.entry__day{
   font-family:var(--serif);
-  font-size:1.9rem;
-  font-weight:300;
-  color:var(--ink);
+  font-size:1.7rem;
+  font-weight:400;
+  color:var(--ink2);
   line-height:1;
-  margin:0.1rem 0;
 }
 
-.card__year{
+.entry__yr{
   font-family:var(--mono);
-  font-size:0.46rem;
+  font-size:0.44rem;
   color:var(--muted);
-  opacity:0.6;
-  letter-spacing:0.08em;
+  opacity:0.55;
 }
 
-/* Body */
-.card__title{
+/* Content column */
+.entry__title{
   font-family:var(--serif);
-  font-size:1.15rem;
+  font-size:1.1rem;
   font-weight:400;
   color:var(--ink);
-  line-height:1.35;
+  line-height:1.4;
   margin-bottom:0.5rem;
-  transition:color 0.2s;
 }
 
-.card:hover .card__title{color:var(--ink2)}
-
-.card__desc{
+.entry__desc{
   font-size:0.78rem;
   font-weight:300;
   color:var(--muted);
-  line-height:1.65;
-  margin-bottom:0.7rem;
+  line-height:1.7;
+  margin-bottom:0.75rem;
 }
 
-.card__tags{display:flex;flex-wrap:wrap;gap:0.35rem}
+.entry__foot{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
 
-.card__tag{
+.entry__words{
+  display:flex;
+  gap:0.5rem;
+  flex-wrap:wrap;
+}
+
+.entry__word{
   font-family:var(--mono);
-  font-size:0.56rem;
-  letter-spacing:0.04em;
-  padding:0.22em 0.7em;
-  border-radius:20px;
-  background:var(--gold2);
-  color:var(--gold);
-  border:1px solid rgba(200,160,80,0.25);
+  font-size:0.54rem;
+  letter-spacing:0.03em;
+  color:var(--amber);
+  opacity:0.8;
 }
 
-/* Meta */
-.card__meta{
-  display:flex;flex-direction:column;
-  align-items:flex-end;gap:0.5rem;
-  padding-top:0.15rem;
+.entry__word+.entry__word::before{
+  content:'·';
+  margin-right:0.5rem;
+  opacity:0.4;
 }
 
-.card__level{
+.entry__lv{
   font-family:var(--mono);
-  font-size:0.56rem;
+  font-size:0.5rem;
   letter-spacing:0.1em;
-  color:var(--ink2);
-  border:1px solid rgba(45,74,106,0.25);
-  padding:0.22em 0.65em;
-  border-radius:10px;
-  background:rgba(255,255,255,0.5);
-}
-
-.card__arrow{
-  font-size:0.9rem;
   color:var(--muted);
-  opacity:0.5;
-  transition:opacity 0.2s,transform 0.2s;
+  margin-left:auto;
 }
-
-.card:hover .card__arrow{opacity:1;transform:translateX(3px)}
 
 /* ── Footer ── */
 .footer{
-  margin-top:clamp(3rem,6vh,5rem);
-  text-align:center;
+  margin-top:clamp(4rem,8vh,6rem);
 }
 
 .footer__text{
   font-family:var(--mono);
   font-size:0.5rem;
-  letter-spacing:0.3em;
+  letter-spacing:0.25em;
   text-transform:uppercase;
   color:var(--muted);
-  opacity:0.5;
+  opacity:0.45;
 }
 
 /* ── Entrance ── */
-.card{opacity:0;transform:translateY(14px)}
-.card.in{
+.entry{opacity:0;transform:translateY(8px)}
+.entry.in{
   opacity:1;transform:translateY(0);
-  transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.2,0.8,0.2,1),
-             box-shadow 0.3s ease,background 0.3s ease;
+  transition:opacity 0.5s ease, transform 0.5s cubic-bezier(0.2,0.8,0.2,1);
 }
+.entry.in:hover{opacity:0.72;transition:opacity 0.25s}
 
-@media(max-width:560px){
-  .card{grid-template-columns:1fr;gap:0.7rem;padding:1.3rem 1.4rem}
-  .card__date{flex-direction:row;gap:0.5rem;align-items:baseline}
-  .card__meta{flex-direction:row;align-items:center}
-  .stats{gap:2rem}
+@media(max-width:500px){
+  .entry{grid-template-columns:1fr;gap:0.6rem}
+  .entry__date{flex-direction:row;gap:0.4rem;align-items:baseline}
 }
 </style>
 </head>
 <body>
-
-<div class="sky"></div>
-
 <main class="hub">
 
   <header class="header">
-    <p class="header__eyebrow">Immersive English Reading</p>
-    <h1 class="header__title">Reading <em>Hub</em></h1>
-    <p class="header__sub">每一篇阅读，都是一件沉浸式设计作品<br>留白 · 間 · 自然光晕</p>
-    <span class="header__rule"></span>
+    <p class="header__label">Immersive English Reading</p>
+    <h1 class="header__title"><strong>Reading</strong><br>Hub</h1>
+    <p class="header__desc">每一篇阅读，都是一件沉浸式设计作品。<br>留白 · 間 · 自然光晕。</p>
   </header>
+
+  <div class="divider"></div>
 
   <div class="stats">
     <div class="stat">
-      <span class="stat__value" id="total-count">5</span>
-      <span class="stat__label">Articles</span>
+      <span class="stat__n">5</span>
+      <span class="stat__l">Articles</span>
     </div>
     <div class="stat">
-      <span class="stat__value" id="vocab-count">15</span>
-      <span class="stat__label">Words Learned</span>
+      <span class="stat__n">15</span>
+      <span class="stat__l">Words</span>
     </div>
   </div>
 
-  <section class="card-list">
+  <section class="list">
 
-    <a class="card" href="./articles/2026-04-25-evacuate/">
-      <div class="card__date">
-        <span class="card__month">Apr</span>
-        <span class="card__day">25</span>
-        <span class="card__year">2026</span>
+    <a class="entry" href="./articles/2026-04-25-evacuate/">
+      <div class="entry__date">
+        <span class="entry__mon">Apr</span>
+        <span class="entry__day">25</span>
+        <span class="entry__yr">2026</span>
       </div>
-      <div class="card__body">
-        <h2 class="card__title">How Do You Pack a Life in 72 Hours?</h2>
-        <p class="card__desc">Berkeley, 1942 — a Japanese-American woman has 72 hours to pack a lifetime before the government's exclusion order takes effect.</p>
-        <div class="card__tags">
-          <span class="card__tag">evacuate</span>
-          <span class="card__tag">regime</span>
+      <div>
+        <h2 class="entry__title">How Do You Pack a Life in 72 Hours?</h2>
+        <p class="entry__desc">Berkeley, 1942 — a Japanese-American woman has 72 hours to pack a lifetime before the government's exclusion order takes effect.</p>
+        <div class="entry__foot">
+          <div class="entry__words">
+            <span class="entry__word">evacuate</span>
+            <span class="entry__word">regime</span>
+          </div>
+          <span class="entry__lv">LV 3</span>
         </div>
-      </div>
-      <div class="card__meta">
-        <span class="card__level">LV.3</span>
-        <span class="card__arrow">→</span>
       </div>
     </a>
 
-    <a class="card" href="./articles/2026-04-23-smoothie-stand-tactics/">
-      <div class="card__date">
-        <span class="card__month">Apr</span>
-        <span class="card__day">23</span>
-        <span class="card__year">2026</span>
+    <a class="entry" href="./articles/2026-04-23-smoothie-stand-tactics/">
+      <div class="entry__date">
+        <span class="entry__mon">Apr</span>
+        <span class="entry__day">23</span>
+        <span class="entry__yr">2026</span>
       </div>
-      <div class="card__body">
-        <h2 class="card__title">The Smoothie Stand Bluff</h2>
-        <p class="card__desc">A teenage worker and her shift lead discover that a fake firing is the best way to disarm an angry customer.</p>
-        <div class="card__tags">
-          <span class="card__tag">tactics</span>
-          <span class="card__tag">intimidating</span>
-          <span class="card__tag">capitulate</span>
-          <span class="card__tag">tact</span>
+      <div>
+        <h2 class="entry__title">The Smoothie Stand Bluff</h2>
+        <p class="entry__desc">A teenage worker and her shift lead discover that a fake firing is the best way to disarm an angry customer.</p>
+        <div class="entry__foot">
+          <div class="entry__words">
+            <span class="entry__word">tactics</span>
+            <span class="entry__word">intimidating</span>
+            <span class="entry__word">capitulate</span>
+          </div>
+          <span class="entry__lv">LV 3</span>
         </div>
-      </div>
-      <div class="card__meta">
-        <span class="card__level">LV.3</span>
-        <span class="card__arrow">→</span>
       </div>
     </a>
 
-    <a class="card" href="./articles/2026-04-22-beef-noodle-soup/">
-      <div class="card__date">
-        <span class="card__month">Apr</span>
-        <span class="card__day">22</span>
-        <span class="card__year">2026</span>
+    <a class="entry" href="./articles/2026-04-22-beef-noodle-soup/">
+      <div class="entry__date">
+        <span class="entry__mon">Apr</span>
+        <span class="entry__day">22</span>
+        <span class="entry__yr">2026</span>
       </div>
-      <div class="card__body">
-        <h2 class="card__title">Every Drop</h2>
-        <p class="card__desc">A bowl of beef noodle soup becomes a vessel of memory — six years of silence, spoken through broth.</p>
-        <div class="card__tags">
-          <span class="card__tag">precipitate</span>
-          <span class="card__tag">intact</span>
+      <div>
+        <h2 class="entry__title">Every Drop</h2>
+        <p class="entry__desc">A bowl of beef noodle soup becomes a vessel of memory — six years of silence, spoken through broth.</p>
+        <div class="entry__foot">
+          <div class="entry__words">
+            <span class="entry__word">precipitate</span>
+            <span class="entry__word">intact</span>
+          </div>
+          <span class="entry__lv">LV 3</span>
         </div>
-      </div>
-      <div class="card__meta">
-        <span class="card__level">LV.3</span>
-        <span class="card__arrow">→</span>
       </div>
     </a>
 
-    <a class="card" href="./articles/2026-04-20-data-centers/">
-      <div class="card__date">
-        <span class="card__month">Apr</span>
-        <span class="card__day">20</span>
-        <span class="card__year">2026</span>
+    <a class="entry" href="./articles/2026-04-20-data-centers/">
+      <div class="entry__date">
+        <span class="entry__mon">Apr</span>
+        <span class="entry__day">20</span>
+        <span class="entry__yr">2026</span>
       </div>
-      <div class="card__body">
-        <h2 class="card__title">Data Centers &amp; Democracy</h2>
-        <p class="card__desc">Virginia voters push back against server farms as electricity bills skyrocket and grassroots opposition doubles in a single year.</p>
-        <div class="card__tags">
-          <span class="card__tag">capitalize</span>
-          <span class="card__tag">precipitate</span>
-          <span class="card__tag">capitulate</span>
-          <span class="card__tag">assessment</span>
+      <div>
+        <h2 class="entry__title">Data Centers &amp; Democracy</h2>
+        <p class="entry__desc">Virginia voters push back against server farms as electricity bills skyrocket and grassroots opposition doubles in a single year.</p>
+        <div class="entry__foot">
+          <div class="entry__words">
+            <span class="entry__word">capitalize</span>
+            <span class="entry__word">precipitate</span>
+            <span class="entry__word">capitulate</span>
+          </div>
+          <span class="entry__lv">LV 3</span>
         </div>
-      </div>
-      <div class="card__meta">
-        <span class="card__level">LV.3</span>
-        <span class="card__arrow">→</span>
       </div>
     </a>
 
@@ -418,11 +348,10 @@ body{
   </footer>
 
 </main>
-
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('.card').forEach((c,i)=>{
-    setTimeout(()=>c.classList.add('in'), 100 + i*100);
+  document.querySelectorAll('.entry').forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('in'), 120 + i*90);
   });
 });
 </script>
